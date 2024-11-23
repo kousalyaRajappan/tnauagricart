@@ -13,17 +13,21 @@ public class BrowserActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_browser);
-        // Introduce a delay before starting MainActivity
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                // Start MainActivity
-                openUrl("https://www.tnauagricart.com/");
+        UpdateChecker updateChecker = new UpdateChecker(this);
+        if (updateChecker.checkForUpdate()) {
+            updateChecker.showForceUpdateDialog();
+        } else {
+            // Introduce a delay before starting MainActivity
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    // Start MainActivity
+                    openUrl("https://www.tnauagricart.com/");
 
-            }
-        }, 2000); // 2000
+                }
+            }, 2000); // 2000
 
-
+        }
     }
 
     private void openUrl(String url) {

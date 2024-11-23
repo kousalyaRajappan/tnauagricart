@@ -16,7 +16,7 @@ public class SplashScreen extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                // Start MainActivity
+
                 Intent intent = new Intent(SplashScreen.this, BrowserActivity.class);
                 startActivity(intent);
                 // Finish SplashScreen activity so it can't be returned to
